@@ -99,13 +99,13 @@
   "Redux Selector": {
     "prefix": "vrselector",
     "body": [
-      "export const get${2:reduxObject} = ({${1:domain}}) => ${1:domain}.${2:reduxObject}"
+      "export const get${3:reduxObject} = ({${1:domain}}) => ${1:domain}.${2:reduxObject}"
     ]
   },
   "Redux Action": {
     "prefix": "vraction",
     "body": [
-      "// TODO uncomment if new file",
+      "// TODO: uncomment if new file",
       "// import * as actionTypes from './actionTypes'; ",
       "// import * as sharedServices from 'store/Shared/services';",
       "// import { getAuthToken } from 'store/Authentication/selectors';",
@@ -175,8 +175,8 @@
       "                        completed: is.null(responseData.next),",
       "                         // TODO: If page is removed, remove this field",
       "                        currentPage: ${3:page},",
-      "                        items:[",
-      "                            ...getItems(getState()).items,                            ",
+      "                        ${5:items}:[",
+      "                            ...get${8:getItems}Results(getState()).${9:items},                            ",
       "                            ...objectToCamelCase(responseData.results),",
       "                        ]",
       "                    }",
@@ -186,7 +186,7 @@
       "            // TODO uncomment to fetch everything",
       "            //   if(is.not.null(responseData.next)){",
       "            //       // TODO: If page is removed, update this parameter",
-      "            //       doSomething(${2:param}, ${3:page} +1)",
+      "            //       ${1:doSomething}(${2:param}, ${3:page} +1)",
       "            //   }",
       "            });",
       "          }",
