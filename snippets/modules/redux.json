@@ -230,7 +230,7 @@
       "    };",
       "  };",
       "  ",
-      "  export const resetDoSomething = () => {",
+      "  export const ${9:resetDoSomething} = () => {",
       "    return (dispatch) => {",
       "      dispatch({",
       "        type: actionTypes.${4:ACTION_TYPE}_RESET,",
