@@ -111,6 +111,7 @@
       "// import { getAuthToken } from 'store/Authentication/selectors';",
       "// import { backgroundLogin } from 'src/Authentication/actions';",
       "// import { objectToCamelCase, isNull } from 'src/lib/utils';",
+      "// import is from 'is_js';",
       "",
       "export const ${1:doSomething} = (${2:param}, ${3:page}=1) => {",
       "    return (dispatch, getState) => {",
