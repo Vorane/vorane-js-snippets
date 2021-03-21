@@ -176,7 +176,7 @@
       "                         // TODO: If page is removed, remove this field",
       "                        currentPage: ${3:page},",
       "                        ${5:items}:[",
-      "                            ...get${8:getItems}Results(getState()).${9:items},                            ",
+      "                            ...get${8:getItems}Results(getState()).${5:items},                            ",
       "                            ...objectToCamelCase(responseData.results),",
       "                        ]",
       "                    }",
