@@ -99,18 +99,19 @@
   "Redux Selector": {
     "prefix": "vrselector",
     "body": [
-      "export const get${2:reduxObject} = ({${1:domain}}) => ${1:domain}.${2:reduxObject}"
+      "export const get${3:reduxObject} = ({${1:domain}}) => ${1:domain}.${2:reduxObject}"
     ]
   },
   "Redux Action": {
     "prefix": "vraction",
     "body": [
-      "// TODO uncomment if new file",
+      "// TODO: uncomment if new file",
       "// import * as actionTypes from './actionTypes'; ",
       "// import * as sharedServices from 'store/Shared/services';",
       "// import { getAuthToken } from 'store/Authentication/selectors';",
       "// import { backgroundLogin } from 'src/Authentication/actions';",
       "// import { objectToCamelCase, isNull } from 'src/lib/utils';",
+      "// import is from 'is_js';",
       "",
       "export const ${1:doSomething} = (${2:param}, ${3:page}=1) => {",
       "    return (dispatch, getState) => {",
@@ -175,8 +176,8 @@
       "                        completed: is.null(responseData.next),",
       "                         // TODO: If page is removed, remove this field",
       "                        currentPage: ${3:page},",
-      "                        items:[",
-      "                            ...getItems(getState()).items,                            ",
+      "                        ${5:items}:[",
+      "                            ...get${8:getItems}Results(getState()).${5:items},                            ",
       "                            ...objectToCamelCase(responseData.results),",
       "                        ]",
       "                    }",
@@ -186,7 +187,7 @@
       "            // TODO uncomment to fetch everything",
       "            //   if(is.not.null(responseData.next)){",
       "            //       // TODO: If page is removed, update this parameter",
-      "            //       doSomething(${2:param}, ${3:page} +1)",
+      "            //       ${1:doSomething}(${2:param}, ${3:page} +1)",
       "            //   }",
       "            });",
       "          }",
@@ -230,7 +231,7 @@
       "    };",
       "  };",
       "  ",
-      "  export const resetDoSomething = () => {",
+      "  export const ${9:resetDoSomething} = () => {",
       "    return (dispatch) => {",
       "      dispatch({",
       "        type: actionTypes.${4:ACTION_TYPE}_RESET,",
@@ -241,5 +242,41 @@
       "    };",
       "  };"
     ]
+  },
+  "Redux Switcher Button": {
+    "prefix": "vrswitcher",
+    "body": [
+      "    //TODO: import process , Switcher, ThemeConsumer",
+      "    <Switcher",
+      "      value={${1:process}.status}",
+      "      IDLE={",
+      "        <Button>",
+      "          <ButtonText>${2:IdleMessage}</ButtonText>",
+      "        </Button>",
+      "      }",
+      "      PROCESSING={",
+      "        <Button>",
+      "          <ButtonText>${3:ProcessingMessage}</ButtonText>",
+      "          <ThemeConsumer>",
+      "            {(theme) => (",
+      "              <ActivityIndicator color={theme.PRIMARY_COLOR} size=\"large\" />",
+      "            )}",
+      "          </ThemeConsumer>",
+      "        </Button>",
+      "      }",
+      "      SUCCESS={",
+      "        <Button>",
+      "          <ButtonText>${4:SuccessMessage}</ButtonText>",
+      "        </Button>",
+      "      }",
+      "      ERROR={",
+      "        <Button>",
+      "          <ButtonText>{${1:process}.error}</ButtonText>",
+      "        </Button>",
+      "      }",
+      "    />",
+      ""
+    ],
+    "description": ""
   }
 }

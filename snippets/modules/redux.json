@@ -242,5 +242,41 @@
       "    };",
       "  };"
     ]
+  },
+  "Redux Switcher Button": {
+    "prefix": "vrswitcher",
+    "body": [
+      "    //TODO: import process , Switcher, ThemeConsumer",
+      "    <Switcher",
+      "      value={${1:process}.status}",
+      "      IDLE={",
+      "        <Button>",
+      "          <ButtonText>${2:IdleMessage}</ButtonText>",
+      "        </Button>",
+      "      }",
+      "      PROCESSING={",
+      "        <Button>",
+      "          <ButtonText>${3:ProcessingMessage}</ButtonText>",
+      "          <ThemeConsumer>",
+      "            {(theme) => (",
+      "              <ActivityIndicator color={theme.PRIMARY_COLOR} size=\"large\" />",
+      "            )}",
+      "          </ThemeConsumer>",
+      "        </Button>",
+      "      }",
+      "      SUCCESS={",
+      "        <Button>",
+      "          <ButtonText>${4:SuccessMessage}</ButtonText>",
+      "        </Button>",
+      "      }",
+      "      ERROR={",
+      "        <Button>",
+      "          <ButtonText>{${1:process}.error}</ButtonText>",
+      "        </Button>",
+      "      }",
+      "    />",
+      ""
+    ],
+    "description": ""
   }
 }
