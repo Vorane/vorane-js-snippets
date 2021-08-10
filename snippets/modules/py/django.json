@@ -124,7 +124,8 @@
             "    serializer_class = ${3:MyModelSerializer}",
             "    permission_classes = [IsAuthenticated]",
             "    filter_backends = [DjangoFilterBackend, filters.SearchFilter]",
-            "    filter_fields = ['${4:field_1}', '${5:field_2}', '${6:field_3}']",
+            "    filter_fields = ['${4:field_1}', '${5:field_2}']",
+            "    search_fields = ['${4:field_1}', '${5:field_2}']",
             ""
         ],
         "description": "django simple viewset"
@@ -149,7 +150,8 @@
             "    serializer_class = ${3:MyModelSerializer}",
             "    permission_classes = [IsAuthenticated]",
             "    filter_backends = [DjangoFilterBackend, filters.SearchFilter]",
-            "    filter_fields = ['${4:field_1}', '${5:field_2}', '${6:field_3}']",
+            "    filter_fields = ['${4:field_1}', '${5:field_2}']",
+            "    search_fields = ['${4:field_1}', '${5:field_2}']",
             "",
             "    def create(self, request, *args, **kwargs):",
             "        serializer = ${7:CustomSerializer}(data=request.data)",
