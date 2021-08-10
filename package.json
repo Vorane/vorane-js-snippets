@@ -19,7 +19,11 @@
     "snippets": [
       {
         "language": "javascript",
-        "path": "./snippets/snippets.code-snippets"
+        "path": "./snippets/javascript.code-snippets"
+      },
+      {
+        "language": "python",
+        "path": "./snippets/python.code-snippets"
       }
     ]
   },
@@ -27,6 +31,10 @@
     "json-concat": "^0.0.1"
   },
   "scripts": {
-    "concat": "node_modules\\.bin\\json-concat snippets/modules/ snippets/snippets.code-snippets"
+    "concatjs": "json-concat snippets/modules/js/ snippets/javascript.code-snippets",
+    "concatpy": "json-concat snippets/modules/py/ snippets/python.code-snippets"
+  },
+  "dependencies": {
+    "generator-code": "^1.5.5"
   }
 }
