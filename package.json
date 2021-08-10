@@ -1,13 +1,13 @@
 {
-  "name": "vorane-js-snippets",
-  "displayName": "vorane-js-snippets",
+  "name": "vorane-snippets",
+  "displayName": "vorane-snippets",
   "description": "vorane javascript code snippets",
   "version": "0.0.1",
-  "publisher": "vorane-studios",
+  "publisher": "VoraneStudios",
   "icon": "images/logo.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Vorane/vorane-js-snippets"
+    "url": "https://github.com/Vorane/vorane-snippets"
   },
   "engines": {
     "vscode": "^1.54.0"
