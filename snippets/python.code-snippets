@@ -4,7 +4,8 @@
         "body": [
             "# from django.db import models",
             "# from commons.models import BaseModel",
-            "# from module.paths import my_model_directory_path, ",
+            "# from commons.utils import FileValidator",
+            "# from ${1:module}.paths import ${3:my_model_directory_path} ",
             "# from other_module.models import ParentModel",
             "# from commons.validators import FILE_VALIDATOR",
             "",
@@ -14,7 +15,7 @@
             "    # description = models.TextField(null=True, blank=True)",
             "    # int_field = models.IntegerField(max_length=40, null=True, blank=True, unique=False)",
             "    # file_field = models.FileField(",
-            "    #     upload_to=my_model_directory_path,",
+            "    #     upload_to=${3:my_model_directory_path},",
             "    #     max_length=2000,",
             "    #     null=True,",
             "    #     blank=True,",
@@ -35,8 +36,8 @@
             "    # shirt_size = models.CharField(max_length=1, choices=MODEL_OPTIONS)",
             "",
             "    class Meta:",
-            "        ordering = [\"date_created\"]",
-            "        verbose_name_plural = \"MyModel\"",
+            "        ordering = [\"created_at\"]",
+            "        verbose_name_plural = \"${2:MYModel}\"",
             "    ",
             "    def __str__(self):",
             "        return \"\""
@@ -49,7 +50,7 @@
             "from ${1:module}.models import ${2:MyModel}",
             "from rest_framework.serializers import ModelSerializer",
             "",
-            "class ${2:MyModel}InlineSerializer(ModelSerializer):",
+            "class ${2:MyModel}Serializer(ModelSerializer):",
             "    ",
             "    class Meta:",
             "        model = ${2:MyModel}",
@@ -66,7 +67,7 @@
             "",
             "from ${1:module}.models import ${2:MyModel}",
             "",
-            "class ${2:MyModel}DetailSerializer(ModelSerializer):",
+            "class ${2:MyModel}Serializer(ModelSerializer):",
             "    ${3:parent} = ${4:ParentSerializer}()",
             "    ${6:children} = ${7:ChildSerializer}(source='${9:child_parent}',many=True)",
             "    ${10:computed_field} = serializers.SerializerMethodField()",
@@ -77,7 +78,7 @@
             "        exclude = ('${11:field_to_exclude}',)",
             "        ",
             "    ",
-            "    def get_computed_field(self, obj):",
+            "    def get_${10:computed_field}(self, obj):",
             "        # compute result here",
             "        result = \"\"",
             "        return result",
@@ -86,7 +87,7 @@
             "        # get specific field from data",
             "        # email = validated_data.get(\"email\")",
             "",
-            "        # create {2:MyModel}",
+            "        # create ${2:MyModel}",
             "        ${12:new_model} = ${2:MyModel}.objects.create(**validated_data)",
             "        return ${12:new_model}",
             "",
@@ -124,7 +125,8 @@
             "    serializer_class = ${3:MyModelSerializer}",
             "    permission_classes = [IsAuthenticated]",
             "    filter_backends = [DjangoFilterBackend, filters.SearchFilter]",
-            "    filter_fields = ['${4:field_1}', '${5:field_2}', '${6:field_3}']",
+            "    filter_fields = ['${4:field_1}', '${5:field_2}']",
+            "    search_fields = ['${4:field_1}', '${5:field_2}']",
             ""
         ],
         "description": "django simple viewset"
@@ -149,7 +151,8 @@
             "    serializer_class = ${3:MyModelSerializer}",
             "    permission_classes = [IsAuthenticated]",
             "    filter_backends = [DjangoFilterBackend, filters.SearchFilter]",
-            "    filter_fields = ['${4:field_1}', '${5:field_2}', '${6:field_3}']",
+            "    filter_fields = ['${4:field_1}', '${5:field_2}']",
+            "    search_fields = ['${4:field_1}', '${5:field_2}']",
             "",
             "    def create(self, request, *args, **kwargs):",
             "        serializer = ${7:CustomSerializer}(data=request.data)",
@@ -189,7 +192,7 @@
         ],
         "description": "django detailed viewset"
     },
-    "django url viewset": {
+    "django viewset url ": {
         "prefix": "vdurl",
         "body": [
             "",
@@ -203,7 +206,7 @@
             "${3:my_model}_router = SimpleRouter()",
             "${3:my_model}_router.register('', ${2:MyModelViewSet})",
             "${1:module}_urls = [",
-            "    path('my-model/', include(${3:my_model}_router.urls)),    ",
+            "    path('${4:my-model}/', include(${3:my_model}_router.urls)),    ",
             "]",
             ""
         ],
@@ -279,8 +282,8 @@
             "    return f'${1:module}/{folder_name}/{filename}'",
             "",
             "def ${2:model}_${3:extra_path_name}_path(instance, filename):",
-            "    \"\"\"${2:model} mvr record media path\"\"\"",
-            "    folder_name = f'${2:model}/${3:extra_path_name}/{instance.id}'",
+            "    \"\"\"${2:model} record media path\"\"\"",
+            "    folder_name = f'${2:model}/${3:extra_path_name}/{instance.uuid}'",
             "    return generic_directory_path(folder_name, filename)"
         ],
         "description": "django path"

@@ -84,7 +84,9 @@
   },
   "Redux Process": {
     "prefix": "vrprocess",
-    "body": [" ${1:doSomethingProcess} :{ status : processTypes.IDLE}"]
+    "body": [
+      " ${1:doSomethingProcess} :{ status : processTypes.IDLE}"
+    ]
   },
   "Redux Pagination Object": {
     "prefix": "vrpagedobject",
@@ -278,5 +280,83 @@
       ""
     ],
     "description": ""
+  },
+  "Redux Container export": {
+    "prefix": "vrcontainerexport",
+    "body": [
+      "import ${1:ComponentContainer} from \"./${1:ComponentContainer}\"",
+      "export default ${1:ComponentContainer}"
+    ],
+    "description": "Container export"
+  },
+  "Redux Container Components": {
+    "prefix": "vrcontainer",
+    "body": [
+      "import React, {Component} from 'react';",
+      "import {bindActionCreators} from 'redux';",
+      "import {connect} from 'react-redux';",
+      "",
+      "import ${1:Component} from './${1:Component}';",
+      "export class ${1:Component}Container extends Component {",
+      "  render() {",
+      "    return <${1:Component} ${2:{...this.props}}/>;",
+      "  }",
+      "}",
+      "",
+      "const mapStateToProps = (state) => ({});",
+      "",
+      "const mapDispatchToProps = (dispatch) => ({});",
+      "",
+      "export default connect(",
+      "  mapStateToProps,",
+      "  mapDispatchToProps,",
+      ")(${1:Component}Container);",
+      ""
+    ],
+    "description": "Redux Container Components"
+  },
+  "Redux Store import": {
+    "prefix": "vrstoreimports",
+    "body": [
+      "import * as ${1:domain}Actions from 'store/${2:Domain}/actions';",
+      "import * as ${1:domain}Selectors from 'store/${2:Domain}/selectors';"
+    ],
+    "description": "Redux Store import"
+  },
+  "Redux Component Lifecycle methods": {
+    "prefix": "vrlifecyclemethods",
+    "body": [
+      "//#region lifecycle",
+      "  componentDidMount() {}",
+      "  componentDidUpdate(prevProps, prevState, snapshot) {",
+      "    if (",
+      "      prevProps.${1:doSomethingProcess}.status !==",
+      "        this.props.${1:doSomethingProcess}.status &&",
+      "      this.props.${1:doSomethingProcess}.status === 'SUCCESS'",
+      "    ) {",
+      "      setTimeout(() => {",
+      "        this.props.${2:domainAction}.${3:resetDoSomething}();",
+      "      }, 1500);",
+      "    }",
+      "    if (",
+      "      prevProps.${1:doSomethingProcess}.status !==",
+      "        this.props.${1:doSomethingProcess}.status &&",
+      "      this.props.${1:doSomethingProcess}.status === 'ERROR'",
+      "    ) {",
+      "      setTimeout(() => {",
+      "        this.props.${2:domainAction}.${3:resetDoSomething}();",
+      "      }, 2500);",
+      "    }",
+      "  }",
+      "  componentWillUnmount() {",
+      "    this.props.${2:domainAction}.${3:resetDoSomething}();",
+      "  }",
+      "  //#endregion",
+      "",
+      "  //#region handlers",
+      "  ",
+      "  //#endregion"
+    ],
+    "description": "Redux Component Lifecycle methods"
   }
 }
