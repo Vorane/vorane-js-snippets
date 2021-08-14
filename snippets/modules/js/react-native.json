@@ -1,0 +1,29 @@
+{
+    "React Native List Component": {
+        "prefix": "vrnlist",
+        "body": [
+            "import React from 'react'",
+            "import {View, Text} from 'react-native'",
+            "import styled from 'styled-components'",
+            "",
+            "import ${3:AccountsListItem} from 'components/${3:AccountsListItem}'",
+            "const Wrapper = styled.FlatList``",
+            "export default function ${1:AccountsList}({${2:items}, ${5:itemPress}}) {",
+            "\tconst renderItem = ({item: ${4:itemName} }) => {",
+            "\t\t return (",
+            "\t\t\t< ${3:AccountsListItem} ${4:itemName}={${4:itemName}} ${5:itemPress}={${5:itemPress}} />",
+            "\t\t)",
+            "\t}",
+            "\treturn (",
+            "\t\t<Wrapper",
+            "\t\t\tdata={${2:items}}",
+            "\t\t\trenderItem={renderItem}",
+            "\t\t\tkeyExtractor={(item, index) => index.toString()}",
+            "\t\t/>",
+            "\t)",
+            "}",
+            ""
+        ],
+        "description": "React Native List Component"
+    }
+}
