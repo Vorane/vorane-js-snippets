@@ -224,6 +224,7 @@
             "    list_display = ('${3:field_1}', \"${4:field_2}\")",
             "    history_list_display = ('${3:field_1}', \"${4:field_2}\" )",
             "    search_fields = ('${3:field_1}', \"${4:field_2}\")",
+            "    list_filter = ('${3:field_1}', \"${4:field_2}\")",
             "",
             "admin.site.register(${2:MyModel}, ${2:MyModel}Admin)",
             ""
