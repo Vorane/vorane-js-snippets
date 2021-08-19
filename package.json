@@ -2,7 +2,7 @@
   "name": "vorane-snippets",
   "displayName": "vorane-snippets",
   "description": "vorane javascript code snippets",
-  "version": "0.0.9",
+  "version": "0.0.12",
   "publisher": "VoraneStudios",
   "icon": "images/logo.png",
   "repository": {
@@ -19,6 +19,10 @@
     "snippets": [
       {
         "language": "javascript",
+        "path": "./snippets/javascript.code-snippets"
+      },
+      {
+        "language": "typescript",
         "path": "./snippets/javascript.code-snippets"
       },
       {

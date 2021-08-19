@@ -48,7 +48,6 @@
         "prefix": "vdserializer",
         "body": [
             "from ${1:module}.models import ${2:MyModel}",
-            "from rest_framework.serializers import ModelSerializer",
             "",
             "class ${2:MyModel}Serializer(ModelSerializer):",
             "    ",
@@ -61,7 +60,6 @@
     "django detailed serializer": {
         "prefix": "vddetailserializer",
         "body": [
-            "from rest_framework.serializers import ModelSerializer",
             "from ${5:parent_module}.serializers import ${4:ParentSerializer}",
             "from ${8:child_module}.serializers import ${7:ChildSerializer}",
             "",
@@ -220,13 +218,13 @@
             "",
             "from ${1:module}.models import ${2:MyModel}",
             "",
+            "@admin.register(${2:MyModel})",
             "class ${2:MyModel}Admin(SimpleHistoryAdmin):",
             "    list_display = ('${3:field_1}', \"${4:field_2}\")",
             "    history_list_display = ('${3:field_1}', \"${4:field_2}\" )",
             "    search_fields = ('${3:field_1}', \"${4:field_2}\")",
             "    list_filter = ('${3:field_1}', \"${4:field_2}\")",
             "",
-            "admin.site.register(${2:MyModel}, ${2:MyModel}Admin)",
             ""
         ],
         "description": "django admin"
